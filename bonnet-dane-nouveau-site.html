@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bonnet d'Âne — Cantine gourmande à Surgères</title>
+<meta name="description" content="Bonnet d'Âne, cantine gourmande à Surgères. Cuisine de terroir, sincère et créative, par Chloé & Florian Martineau.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ardoise:#232f28;
+    --ardoise-2:#2e3c33;
+    --papier:#f1e8d6;
+    --papier-2:#e8dabd;
+    --encre:#211d16;
+    --brique:#a5432b;
+    --or:#c69a3d;
+    --craie:#eee7d6;
+    --craie-dim:#c9c2ab;
+    --ligne: rgba(238,231,214,0.14);
+    --radius: 6px;
+    --maxw: 1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+  body{
+    margin:0;
+    background:var(--papier);
+    color:var(--encre);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  ::selection{background:var(--or); color:var(--encre);}
+  :focus-visible{outline:3px solid var(--brique); outline-offset:3px;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--brique);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--brique);display:inline-block;}
+  .section-ardoise .eyebrow{color:var(--or);}
+  .section-ardoise .eyebrow::before{background:var(--or);}
+
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    line-height:1.05;
+    margin:0;
+  }
+  .accent{
+    font-style:italic;
+    font-weight:500;
+  }
+  .hand{
+    font-family:'Caveat',cursive;
+    font-weight:600;
+  }
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){.wrap{padding:0 20px;}}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(35,47,40,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--ligne);
+  }
+  .nav{
+    max-width:var(--maxw); margin:0 auto; padding:16px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+    color:var(--craie);
+  }
+  .logo{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:22px;
+    color:var(--craie);
+    text-decoration:none;
+    letter-spacing:.01em;
+  }
+  .navlinks{display:flex; gap:30px; list-style:none; margin:0; padding:0; align-items:center;}
+  .navlinks a{
+    text-decoration:none; color:var(--craie-dim); font-size:14.5px; font-weight:500;
+    position:relative; padding:4px 0;
+  }
+  .navlinks a:hover{color:var(--craie);}
+  .navlinks a.cta{
+    background:var(--or); color:var(--ardoise); padding:9px 18px; border-radius:3px;
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:.04em;
+    font-weight:500;
+  }
+  .navlinks a.cta:hover{background:#d6ad52;}
+  .burger{display:none; background:none; border:none; color:var(--craie); font-size:24px; cursor:pointer;}
+  @media (max-width:860px){
+    .navlinks{
+      position:fixed; top:64px; left:0; right:0; background:var(--ardoise);
+      flex-direction:column; align-items:flex-start; padding:20px 28px 28px; gap:18px;
+      transform:translateY(-130%); transition:transform .35s ease; border-bottom:1px solid var(--ligne);
+    }
+    .navlinks.open{transform:translateY(0);}
+    .burger{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100svh;
+    display:flex; flex-direction:column; justify-content:center;
+    position:relative;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.04), transparent 55%),
+      var(--ardoise);
+    color:var(--craie);
+    padding:140px 0 90px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    opacity:.5;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.035 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    pointer-events:none;
+  }
+  .hero-château{
+    position:absolute; right:-40px; bottom:-10px; width:min(48vw,560px); opacity:.16;
+    pointer-events:none;
+  }
+  .hero-inner{position:relative; z-index:2;}
+  .hero .eyebrow{margin-bottom:22px;}
+  .hero h1{
+    font-size:clamp(56px,10vw,124px);
+    color:var(--craie);
+  }
+  .hero h1 em{
+    display:block;
+    font-style:italic;
+    font-weight:500;
+    color:var(--or);
+    font-size:clamp(24px,3.6vw,38px);
+    margin-top:10px;
+    letter-spacing:.01em;
+  }
+  .hero-underline{
+    width:180px; height:10px; margin:26px 0 30px;
+  }
+  .hero p.lead{
+    max-width:520px; font-size:17.5px; line-height:1.65; color:var(--craie-dim);
+    margin:0 0 38px;
+  }
+  .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:14px 26px; border-radius:3px; text-decoration:none;
+    font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:.04em; font-weight:500;
+    transition:transform .15s ease, background .15s ease;
+    border:1px solid transparent;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--or); color:var(--ardoise);}
+  .btn-primary:hover{background:#d6ad52;}
+  .btn-ghost{border-color:var(--ligne); color:var(--craie);}
+  .btn-ghost:hover{border-color:var(--craie-dim);}
+
+  /* ---------- GENERIC SECTION ---------- */
+  section{padding:118px 0;}
+  @media (max-width:640px){section{padding:80px 0;}}
+  .section-ardoise{background:var(--ardoise); color:var(--craie);}
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:start;}
+  @media (max-width:860px){.grid-2{grid-template-columns:1fr; gap:44px;}}
+
+  .reveal{opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- MAISON (intro/location) ---------- */
+  #maison h2{font-size:clamp(32px,4.4vw,46px); margin-bottom:22px;}
+  #maison p{font-size:16.5px; line-height:1.75; color:#3a352a; max-width:52ch;}
+  .pin-note{
+    margin-top:26px; display:flex; gap:12px; align-items:flex-start;
+    font-family:'Caveat',cursive; font-size:22px; color:var(--brique);
+  }
+  .photo-stack{position:relative; height:460px;}
+  .photo-stack img{
+    position:absolute; border-radius:2px; box-shadow:0 18px 40px rgba(0,0,0,.25);
+    border:6px solid #fff;
+  }
+  .photo-stack img.p1{width:62%; top:0; left:0; transform:rotate(-4deg); z-index:2;}
+  .photo-stack img.p2{width:52%; bottom:0; right:0; transform:rotate(5deg); z-index:1;}
+  .tape{
+    position:absolute; width:80px; height:26px; background:rgba(198,154,61,.55);
+    top:-10px; left:38%; transform:rotate(-8deg); z-index:3;
+    box-shadow:0 2px 4px rgba(0,0,0,.15);
+  }
+  @media (max-width:860px){.photo-stack{height:340px;}}
+
+  /* ---------- QUOTE (leçon du jour) ---------- */
+  .lecon{
+    max-width:760px; margin:0 auto; text-align:center;
+    padding:0 32px;
+  }
+  .lecon .eyebrow{display:flex; justify-content:center; margin-bottom:28px;}
+  .lecon blockquote{
+    margin:0; font-family:'Fraunces',serif; font-style:italic; font-weight:500;
+    font-size:clamp(24px,3.6vw,38px); line-height:1.35; color:var(--craie);
+  }
+  .lecon cite{
+    display:block; margin-top:24px; font-family:'IBM Plex Mono',monospace;
+    font-style:normal; font-size:13px; letter-spacing:.06em; color:var(--craie-dim);
+    text-transform:uppercase;
+  }
+
+  /* ---------- CUISINE / GALLERY ---------- */
+  #cuisine h2{font-size:clamp(32px,4.4vw,46px); margin-bottom:16px;}
+  #cuisine > .wrap > p{max-width:56ch; color:#3a352a; font-size:16.5px; line-height:1.7; margin-bottom:56px;}
+  .gallery{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  }
+  .gallery figure{margin:0; border-radius:3px; overflow:hidden; position:relative; aspect-ratio:3/4;}
+  .gallery img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+  .gallery figure:hover img{transform:scale(1.05);}
+  .gallery figure:nth-child(1){grid-row:span 2;}
+  .gallery figure:nth-child(6){grid-row:span 2;}
+  @media (max-width:860px){
+    .gallery{grid-template-columns:repeat(2,1fr);}
+    .gallery figure:nth-child(1),.gallery figure:nth-child(6){grid-row:auto;}
+  }
+
+  /* ---------- BONS CADEAUX ---------- */
+  .cadeaux-card{
+    background:var(--papier-2); border:1px solid #d8c79c; border-radius:8px;
+    padding:64px; display:grid; grid-template-columns:auto 1fr; gap:56px; align-items:center;
+  }
+  @media (max-width:760px){.cadeaux-card{grid-template-columns:1fr; padding:40px 28px; text-align:center;}}
+  .seal{
+    width:132px; height:132px; border-radius:50%; flex-shrink:0;
+    background:radial-gradient(circle at 32% 30%, #e2b856, var(--or) 60%, #9c7526 100%);
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    box-shadow:0 8px 18px rgba(198,154,61,.35), inset 0 0 0 4px rgba(255,255,255,.25);
+    position:relative;
+  }
+  @media (max-width:760px){.seal{margin:0 auto;}}
+  .seal span{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em;
+    color:var(--encre); line-height:1.5; font-weight:500;
+  }
+  #cadeaux h2{font-size:clamp(28px,4vw,38px); margin-bottom:14px;}
+  #cadeaux p{font-size:16px; line-height:1.7; color:#3a352a; max-width:50ch; margin:0 0 24px;}
+
+  /* ---------- EMPLOI DU TEMPS (hours) ---------- */
+  .edt-wrap{
+    border:1px solid var(--ligne); border-radius:6px; overflow:hidden;
+    background:var(--ardoise-2);
+  }
+  table.edt{width:100%; border-collapse:collapse; font-family:'IBM Plex Mono',monospace; font-size:13.5px;}
+  table.edt th, table.edt td{
+    padding:16px 14px; text-align:left; border-bottom:1px solid var(--ligne);
+  }
+  table.edt th{
+    color:var(--craie-dim); font-weight:500; letter-spacing:.05em; text-transform:uppercase; font-size:11.5px;
+    border-bottom:1px solid var(--craie-dim);
+  }
+  table.edt tr:last-child td{border-bottom:none;}
+  table.edt td.jour{color:var(--craie); font-family:'Fraunces',serif; font-style:italic; font-size:16px;}
+  .slot{
+    display:inline-block; padding:5px 10px; border-radius:3px; font-size:12px;
+  }
+  .slot.on{background:rgba(198,154,61,.18); color:var(--or); border:1px solid rgba(198,154,61,.4);}
+  .slot.off{color:var(--craie-dim); opacity:.55;}
+  .edt-note{
+    font-family:'Caveat',cursive; color:var(--or); font-size:20px; margin-top:18px; padding:0 4px;
+  }
+
+  #infos{background:var(--ardoise); color:var(--craie);}
+  #infos .grid-2{gap:60px;}
+  #infos h2{font-size:clamp(30px,4vw,42px); margin-bottom:8px; color:var(--craie);}
+  .infos-block{margin-bottom:38px;}
+  .infos-block h3{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--or); font-weight:500; margin-bottom:10px;
+  }
+  .infos-block p, .infos-block a{font-size:16px; line-height:1.6; text-decoration:none;}
+  .infos-block a.tel{
+    font-family:'Fraunces',serif; font-style:italic; font-size:26px; color:var(--craie);
+    border-bottom:2px dashed var(--brique); padding-bottom:2px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#1a2420; color:var(--craie-dim); padding:80px 0 30px;}
+  .footer-top{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:50px; padding-bottom:56px; border-bottom:1px solid var(--ligne);}
+  @media (max-width:760px){.footer-top{grid-template-columns:1fr; gap:36px;}}
+  footer h4{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.09em; text-transform:uppercase;
+    color:var(--craie); margin:0 0 16px; font-weight:500;
+  }
+  footer blockquote{
+    font-family:'Fraunces',serif; font-style:italic; font-size:19px; line-height:1.55;
+    color:var(--craie); margin:0;
+  }
+  footer p, footer a{font-size:14.5px; line-height:1.8; text-decoration:none; color:var(--craie-dim);}
+  footer a:hover{color:var(--craie);}
+  .socials{display:flex; gap:14px; margin-top:16px;}
+  .socials a{
+    width:36px; height:36px; border:1px solid var(--ligne); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:14px;
+  }
+  .bottom-bar{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    padding-top:26px; font-size:12.5px; color:#7c8579;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="logo" href="#accueil">Bonnet d'Âne</a>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="#maison">Notre maison</a></li>
+      <li><a href="#cuisine">La cuisine</a></li>
+      <li><a href="#cadeaux">Bons cadeaux</a></li>
+      <li><a href="#infos">Infos pratiques</a></li>
+      <li><a class="cta" href="tel:0546682935">Réserver — 05 46 68 29 35</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+  </nav>
+</header>
+
+<section class="hero" id="accueil">
+  <svg class="hero-château" viewBox="0 0 400 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M40 260V120L70 90V60H90V90L120 60V90L150 60V120L180 90V260" stroke="#eee7d6" stroke-width="2"/>
+    <path d="M180 260V100L220 70V260" stroke="#eee7d6" stroke-width="2"/>
+    <rect x="55" y="150" width="16" height="26" stroke="#eee7d6" stroke-width="1.5"/>
+    <rect x="95" y="150" width="16" height="26" stroke="#eee7d6" stroke-width="1.5"/>
+    <rect x="135" y="150" width="16" height="26" stroke="#eee7d6" stroke-width="1.5"/>
+    <line x1="10" y1="260" x2="240" y2="260" stroke="#eee7d6" stroke-width="2"/>
+  </svg>
+  <div class="hero-inner wrap">
+    <span class="eyebrow reveal">Cantine gourmande · Surgères, Charente-Maritime</span>
+    <h1 class="reveal">Bonnet d'Âne<em>— on y retourne pour les bonnes raisons</em></h1>
+    <svg class="hero-underline reveal" viewBox="0 0 180 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M2 7C40 2 90 9 178 4" stroke="#c69a3d" stroke-width="3" stroke-linecap="round" fill="none"/>
+    </svg>
+    <p class="lead reveal">Une cuisine de terroir, sincère et pleine d'idées : produits locaux, tradition revisitée et un peu d'insolence, servis par Chloé &amp; Florian Martineau.</p>
+    <div class="hero-ctas reveal">
+      <a class="btn btn-primary" href="tel:0546682935">Réserver une table</a>
+      <a class="btn btn-ghost" href="#cuisine">Voir la cuisine</a>
+    </div>
+  </div>
+</section>
+
+<section id="maison">
+  <div class="wrap grid-2">
+    <div class="reveal">
+      <span class="eyebrow">La salle de classe</span>
+      <h2 style="margin-top:18px;">Face au château, en plein cœur de Surgères</h2>
+      <p>En Aunis, à deux pas de La Rochelle, Niort, Rochefort et du Marais poitevin, Bonnet d'Âne s'est installé à l'angle de l'avenue de la Libération et de la rue Paul Bert — vue imprenable sur le château. Bien plus qu'une cantine : une expérience gourmande atypique, créative et raffinée.</p>
+      <div class="pin-note">→ juste en face du château</div>
+    </div>
+    <div class="photo-stack reveal">
+      <div class="tape"></div>
+      <img class="p1" src="https://static.wixstatic.com/media/ce5910_418dfd9818524361b9420feee803500f~mv2.jpg/v1/fill/w_640,h_854,q_90,enc_avif,quality_auto/ce5910_418dfd9818524361b9420feee803500f~mv2.jpg" alt="Salle du restaurant Bonnet d'Âne à Surgères">
+      <img class="p2" src="https://static.wixstatic.com/media/ce5910_aaf09639ef30486e96e624167d865f85~mv2.jpg/v1/fill/w_540,h_720,q_90,enc_avif,quality_auto/ce5910_aaf09639ef30486e96e624167d865f85~mv2.jpg" alt="Détail de la salle du restaurant">
+    </div>
+  </div>
+</section>
+
+<section class="section-ardoise">
+  <div class="lecon reveal">
+    <span class="eyebrow">La leçon du jour</span>
+    <blockquote>« On ne peut pas faire de cuisine si l'on n'aime pas les gens »</blockquote>
+    <cite>Joël Robuchon</cite>
+  </div>
+</section>
+
+<section id="cuisine">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Au tableau</span>
+      <h2 style="margin-top:18px;">Ce qui sort de notre cuisine</h2>
+      <p>Une carte courte, qui change au fil des saisons et du marché — le fil conducteur reste le même : des produits d'ici, travaillés avec précision et un vrai plaisir de bien faire.</p>
+    </div>
+    <div class="gallery reveal">
+      <figure><img src="https://static.wixstatic.com/media/ce5910_b1380048633443ba9f1098cd2d374cfe~mv2.jpeg/v1/fill/w_600,h_800,q_90,enc_avif,quality_auto/ce5910_b1380048633443ba9f1098cd2d374cfe~mv2.jpeg" alt="Assiette créative du restaurant Bonnet d'Âne" loading="lazy"></figure>
+      <figure><img src="https://static.wixstatic.com/media/ce5910_b6be5b930a884696b7f3a2f146750167~mv2.jpg/v1/fill/w_600,h_800,q_90,enc_avif,quality_auto/ce5910_b6be5b930a884696b7f3a2f146750167~mv2.jpg" alt="Plat du chef" loading="lazy"></figure>
+      <figure><img src="https://static.wixstatic.com/media/ce5910_e24c1d4333b54959bf44663497acdb74~mv2.jpg/v1/fill/w_600,h_800,q_90,enc_avif,quality_auto/ce5910_e24c1d4333b54959bf44663497acdb74~mv2.jpg" alt="Cuisine de terroir" loading="lazy"></figure>
+      <figure><img src="https://static.wixstatic.com/media/ce5910_5d97f5c11fcf420d9a812a0fb0cd7c6c~mv2.jpeg/v1/fill/w_600,h_800,q_90,enc_avif,quality_auto/ce5910_5d97f5c11fcf420d9a812a0fb0cd7c6c~mv2.jpeg" alt="Dressage créatif" loading="lazy"></figure>
+      <figure><img src="https://static.wixstatic.com/media/ce5910_2fd7fce2b06143e880d7549cba43dbaf~mv2.jpg/v1/fill/w_600,h_800,q_90,enc_avif,quality_auto/ce5910_2fd7fce2b06143e880d7549cba43dbaf~mv2.jpg" alt="Produits locaux" loading="lazy"></figure>
+      <figure><img src="https://static.wixstatic.com/media/ce5910_35b2ccedc6dd46fa8d0af857b4e072e4~mv2.jpg/v1/fill/w_600,h_800,q_90,enc_avif,quality_auto/ce5910_35b2ccedc6dd46fa8d0af857b4e072e4~mv2.jpg" alt="Plat gourmand" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<section id="cadeaux">
+  <div class="wrap">
+    <div class="cadeaux-card reveal">
+      <div class="seal"><span>BON<br>CADEAU</span></div>
+      <div>
+        <h2>Offrez un bon point</h2>
+        <p>Offrez un moment de partage et de plaisir au restaurant Bonnet d'Âne. Plusieurs formules de chèques-cadeaux sont proposées, à composer selon l'envie et le budget.</p>
+        <a class="btn btn-primary" href="tel:0546682935">Nous appeler — 05 46 68 29 35</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="infos">
+  <div class="wrap grid-2">
+    <div class="reveal">
+      <span class="eyebrow">Infos pratiques</span>
+      <h2 style="margin-top:18px;">Comment venir</h2>
+      <div class="infos-block" style="margin-top:30px;">
+        <h3>Adresse</h3>
+        <p>18 Av. de la Libération<br>17700 Surgères</p>
+      </div>
+      <div class="infos-block">
+        <h3>Téléphone</h3>
+        <a class="tel" href="tel:0546682935">05 46 68 29 35</a>
+      </div>
+      <div class="infos-block">
+        <h3>Notre deuxième adresse</h3>
+        <p>La Maison Familiale<br>Les Sources du Moulin</p>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Emploi du temps</span>
+      <div class="edt-wrap" style="margin-top:18px;">
+        <table class="edt">
+          <thead>
+            <tr><th>Jour</th><th>Déjeuner</th><th>Dîner</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="jour">Lundi</td><td><span class="slot on">12:00–14:00</span></td><td><span class="slot off">—</span></td></tr>
+            <tr><td class="jour">Mardi</td><td><span class="slot on">12:00–14:00</span></td><td><span class="slot off">—</span></td></tr>
+            <tr><td class="jour">Mercredi</td><td><span class="slot on">12:00–14:00</span></td><td><span class="slot on">19:30–21:00</span></td></tr>
+            <tr><td class="jour">Jeudi</td><td><span class="slot on">12:00–14:00</span></td><td><span class="slot on">19:30–21:00</span></td></tr>
+            <tr><td class="jour">Vendredi</td><td><span class="slot on">12:00–14:00</span></td><td><span class="slot on">19:30–21:00</span></td></tr>
+            <tr><td class="jour">Samedi</td><td><span class="slot on">12:00–14:00</span></td><td><span class="slot on">19:30–21:00</span></td></tr>
+            <tr><td class="jour">Dimanche</td><td><span class="slot on">12:00–14:00</span></td><td><span class="slot on">19:30–21:00</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="edt-note">7j/7 le midi, et du mercredi au dimanche le soir ✓</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-top">
+    <div>
+      <h4>Souvenir de classe</h4>
+      <blockquote>« Dans les souvenirs d'enfance de chaque bon cuisinier se trouve une grande cuisine, une cuisinière en marche, un gâteau qui cuit et une maman. »</blockquote>
+    </div>
+    <div>
+      <h4>Le restaurant</h4>
+      <p>
+        18 Av. de la Libération<br>17700 Surgères<br>
+        <a href="tel:0546682935">05 46 68 29 35</a>
+      </p>
+      <div class="socials">
+        <a href="https://www.instagram.com/bonnet_dane_cg/" aria-label="Instagram">IG</a>
+        <a href="https://www.facebook.com/p/Bonnet-d%C3%A2ne-cantine-gastronomique-61563204084153/?locale=fr_FR" aria-label="Facebook">FB</a>
+      </div>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <p>
+        <a href="#maison">Notre maison</a><br>
+        <a href="#cuisine">La cuisine</a><br>
+        <a href="#cadeaux">Bons cadeaux</a><br>
+        <a href="#infos">Infos pratiques</a>
+      </p>
+    </div>
+  </div>
+  <div class="wrap bottom-bar">
+    <span>© 2026 Bonnet d'Âne — cantine gourmande à Surgères 17700</span>
+    <a href="#">Conditions générales · Mentions légales</a>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const navlinks = document.getElementById('navlinks');
+  burger.addEventListener('click', () => {
+    const open = navlinks.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navlinks.classList.remove('open');
+    burger.setAttribute('aria-expanded', false);
+  }));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
